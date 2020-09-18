@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css">
+  <title>Modal</title>
+</head>
+
+<body>
+  <div class="container">
+    <main id="main">
+      <h1>Simple Modal</h1>
+      <button class="btn">Open Modal</button>
+    </main>
+
+    <div class="overlay"></div>
+
+    <div class="modal">
+      <div class="modal-title">
+        <h2 class="modal-header">Modal Title</h2>
+        <a href="#" class="close"><i class="fas fa-times"></i>
+          <span class="tooltiptext">Close Modal</span>
+          <div id="triangle-up"></div>
+        </a>
+      </div>
+
+      <div class="modal-body">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque, dolore. Soluta fugiat sapiente saepe maiores
+          odio, eum sequi. Cum, cupiditate!</p>
+      </div>
+      <div class="modal-footer">
+        <p>Modal Footer</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const btn = document.querySelector('.btn').addEventListener('click', showModal);
+    const close = document.querySelector('.close').addEventListener('click', closeModal);
+    const modal = document.querySelector('.modal');
+    const overlay = document.querySelector('.overlay');
+    const main = document.getElementById('main');
+
+    function showModal(e) {
+      modal.classList.add('show');
+      overlay.classList.add('show');
+      main.style.filter = 'blur(5px)';
+    }
+
+    function closeModal(e) {
+      modal.classList.add('fade');
+      modal.classList.remove('show');
+      overlay.classList.remove('show');
+      main.style.filter = 'blur(0)';
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (e) {
+      if (e.target == overlay) {
+        modal.classList.remove('show');
+        overlay.classList.remove('show');
+        main.style.filter = 'blur(0)';
+      }
+    }
+  </script>
+</body>
+
+</html>
